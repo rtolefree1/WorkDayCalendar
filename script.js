@@ -1,10 +1,85 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-let timeNowEl = document.querySelector('#currentDay');
+let timeNowEl = $('#currentDay');
+timeNowEl.textContent = (dayjs().format());
+
+let hour9El = $('#hour-9');
+let hour10El = $('#hour-10');
+let hour11El = $('#hour-11');
+let hour12El = $('#hour-12');
+let hour1El = $('#hour-1');
+let hour2El = $('#hour-2');
+let hour3El = $('#hour-3');
+let hour4El = $('#hour-4');
+let hour5El = $('#hour-5');
+let saveEl =  $('save');
 
 
-timeNowEl.textContent = dayjs().format();
+
+function saveHour9(){
+  console.log("Doing work at the 9am hour");
+  //doing some work
+}
+hour9El.children().eq(2).on('click', saveHour9);
+hour9El.children().eq(2).textContent= '9am hour';
+
+function saveHour10(){
+  console.log("Doing work at the 10am hour");
+  //doing some work
+}
+hour10El.children().eq(2).on('click', saveHour10);
+hour10El.textContent= '10am hour';
+
+function saveHour11(){
+  console.log("Doing work at the 11am hour");
+  //doing some work
+}
+hour11El.children().eq(2).on('click', saveHour11);
+hour11El.textContent= '11am hour';
+
+function saveHour12(){
+  console.log("Doing work at the 12pm hour");
+  //doing some work
+}
+hour12El.children().eq(2).on('click', saveHour12);
+hour12El.textContent= '12pm hour';
+
+function saveHour1(){
+  console.log("Doing work at the 1pm hour");
+  //doing some work
+}
+hour1El.children().eq(2).on('click', saveHour1);
+hour1El.textContent= '1pm hour';
+
+function saveHour2(){
+  console.log("Doing work at the 2pm hour");
+  //doing some work
+}
+hour2El.children().eq(2).on('click', saveHour2);
+hour2El.textContent= '2pm hour';
+
+function saveHour3(){
+  console.log("Doing work at the 3pm hour");
+  //doing some work
+}
+hour3El.children().eq(2).on('click', saveHour3);
+hour3El.textContent= '3pm hour';
+
+function saveHour4(){
+  console.log("Doing work at the 4pm hour");
+  //doing some work
+}
+hour4El.children().eq(2).on('click', saveHour4);
+hour4El.textContent= '4pm hour';
+
+function saveHour5(){
+  console.log("Doing work at the 5pm hour");
+  //doing some work
+}
+hour5El.children().eq(2).on('click', saveHour5);
+hour5El.textContent= '5pm hour';
+
 
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
@@ -14,6 +89,8 @@ $(function () {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
   //
+  
+
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the
