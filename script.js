@@ -2,11 +2,13 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 let timeNowEl = $('#currentDay');
+let timeVar = dayjs().format('hh:mm:ss');
+
+// console.log("current time:", dayjs().format());
+// console.log("current time:", dayjs().hour()+":"+dayjs().minute());
+timeNowEl.text(timeVar);
 
 
-console.log("current time:", dayjs().format());
-console.log("current time:", dayjs().hour()+":"+dayjs().minute());
-timeNowEl.append( dayjs().hour()+":"+dayjs().minute()+":"+dayjs().second());
 
 let hour9El = $('#hour-9');
 let hour10El = $('#hour-10');
@@ -21,7 +23,7 @@ let saveEl =  $('save');
 
 
 // creating array for the calender to hold an array of calendar objects
-let calenderObj = [];
+let calenderArr = [];
 function saveHour9(){
   let hour9Text = hour9El.children().eq(1).val();
   console.log("Doing work at the 9am hour");
@@ -32,21 +34,25 @@ function saveHour9(){
   //   $("li").text(hour9Text)
   // });
   
-  hour9El.children('textarea').append($('<li>adding some text</li>'));
+  // hour9El.children('textarea').append($('<li>adding some text</li>'));
 
-  let calenderInfo = {
-  TextValue: hour9Text
-}
-calenderObj.push(calenderInfo);
+      let calenderInfo = {
+      TextValue: hour9Text
+    }
+calenderArr.push(calenderInfo);
 console.log(calenderInfo);
-localStorage.getItem(calenderObj);
-localStorage.setItem("calendar Object", JSON.stringify(calenderObj));
 
 
+localStorage.setItem("calendar Object", JSON.stringify(calenderArr));
+localStorage.getItem(calenderArr);
+//hour9Text = localStorage.getItem(calenderArr);
+hour9El.children('textarea').append(localStorage.getItem("calendar Object"));
 timeForStatus();
 }
 hour9El.children().eq(2).on('click', saveHour9);
-hour9El.children().eq(2).textContent= '9am hour';
+
+
+//hour9El.children().eq(2).textContent= '9am hour';
 
 function saveHour10(){
   console.log("Doing work at the 10am hour");
