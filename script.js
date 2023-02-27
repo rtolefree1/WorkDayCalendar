@@ -2,7 +2,11 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 let timeNowEl = $('#currentDay');
-timeNowEl.textContent = (dayjs().format());
+
+
+console.log("current time:", dayjs().format());
+console.log("current time:", dayjs().hour()+":"+dayjs().minute());
+timeNowEl.append( dayjs().hour()+":"+dayjs().minute()+":"+dayjs().second());
 
 let hour9El = $('#hour-9');
 let hour10El = $('#hour-10');
@@ -16,10 +20,30 @@ let hour5El = $('#hour-5');
 let saveEl =  $('save');
 
 
-
+// creating array for the calender to hold an array of calendar objects
+let calenderObj = [];
 function saveHour9(){
+  let hour9Text = hour9El.children().eq(1).val();
   console.log("Doing work at the 9am hour");
+  console.log("9th hour text contains:", hour9Text);
   //doing some work
+  console.log("Testing id:",parseInt($(".time-block").attr("id")))
+  // $("btn").click(function(){
+  //   $("li").text(hour9Text)
+  // });
+  
+  hour9El.children('textarea').append($('<li>adding some text</li>'));
+
+  let calenderInfo = {
+  TextValue: hour9Text
+}
+calenderObj.push(calenderInfo);
+console.log(calenderInfo);
+localStorage.getItem(calenderObj);
+localStorage.setItem("calendar Object", JSON.stringify(calenderObj));
+
+
+timeForStatus();
 }
 hour9El.children().eq(2).on('click', saveHour9);
 hour9El.children().eq(2).textContent= '9am hour';
@@ -27,6 +51,8 @@ hour9El.children().eq(2).textContent= '9am hour';
 function saveHour10(){
   console.log("Doing work at the 10am hour");
   //doing some work
+  timeForStatus();
+
 }
 hour10El.children().eq(2).on('click', saveHour10);
 hour10El.textContent= '10am hour';
@@ -81,12 +107,16 @@ hour5El.children().eq(2).on('click', saveHour5);
 hour5El.textContent= '5pm hour';
 
 
+
+
+
+
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
   // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
+  // time-bl for ock containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
   //
   
@@ -103,3 +133,22 @@ $(function () {
   //
   // TODO: Add code to display the current date in the header of the page.
 });
+
+//Creating timer
+function timeForStatus(){
+  $(".time-block").each(function(){
+    var htmlClockValue = parseInt($(this).attr("id"));
+    if(3 < dayjs().hour){
+      $(this).addClass("past");
+      $(this).removeClass("future");
+      $(this).addClass("present");
+
+    }
+   // console.log(parseInt($(this).attr("id")));//.children().eq(0).val()));
+
+  });
+}
+
+// printCalendarEvent(){
+
+// }
