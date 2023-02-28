@@ -1,3 +1,15 @@
+// let btnEL = $('.saveBtn')
+
+
+
+// btnEL.on('click', function () {
+//   let value = $(this).sibling('.description').val()
+// })
+
+
+
+
+
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
@@ -21,32 +33,30 @@ let hour4El = $('#hour-4');
 let hour5El = $('#hour-5');
 let saveEl =  $('save');
 
-
+hour9El.children().eq(1).val(JSON.parse(localStorage.getItem("calendar")));
+console.log(hour9El.children().eq(1).val(JSON.parse(localStorage.getItem("calendar"))));
 // creating array for the calender to hold an array of calendar objects
 let calenderArr = [];
 function saveHour9(){
   let hour9Text = hour9El.children().eq(1).val();
-  console.log("Doing work at the 9am hour");
-  console.log("9th hour text contains:", hour9Text);
+  console.log(hour9Text);
+  //console.log("9th hour text contains:", hour9Text);
   //doing some work
-  console.log("Testing id:",parseInt($(".time-block").attr("id")))
+  //console.log("Testing id:",parseInt($(".time-block").attr("id")))
   // $("btn").click(function(){
   //   $("li").text(hour9Text)
   // });
   
   // hour9El.children('textarea').append($('<li>adding some text</li>'));
 
-      let calenderInfo = {
-      TextValue: hour9Text
-    }
-calenderArr.push(calenderInfo);
-console.log(calenderInfo);
-
-
-localStorage.setItem("calendar Object", JSON.stringify(calenderArr));
-localStorage.getItem(calenderArr);
+    //   let calenderInfo = {
+    //   TextValue: hour9Text
+    // }
+  calenderArr.push(hour9Text);
+  localStorage.setItem("calendar", JSON.stringify(calenderArr));
+//localStorage.getItem(calenderArr);
 //hour9Text = localStorage.getItem(calenderArr);
-hour9El.children('textarea').append(localStorage.getItem("calendar Object"));
+
 timeForStatus();
 }
 hour9El.children().eq(2).on('click', saveHour9);
@@ -54,63 +64,112 @@ hour9El.children().eq(2).on('click', saveHour9);
 
 //hour9El.children().eq(2).textContent= '9am hour';
 
+let calenderArr2 = [];
+hour10El.children().eq(1).val(JSON.parse(localStorage.getItem("calendar2")));
 function saveHour10(){
+  let hour10Text = hour10El.children().eq(1).val();
   console.log("Doing work at the 10am hour");
   //doing some work
-  timeForStatus();
-
+ // timeForStatus();
+ calenderArr2.push(hour10Text);
+ localStorage.setItem("calendar2", JSON.stringify(calenderArr2));
 }
 hour10El.children().eq(2).on('click', saveHour10);
-hour10El.textContent= '10am hour';
+//hour10El.textContent= '10am hour';
 
+//--11th hour --
+let calenderArr3 = [];
+hour11El.children().eq(1).val(JSON.parse(localStorage.getItem("calendar3")));
 function saveHour11(){
+  let hour11Text = hour11El.children().eq(1).val();
   console.log("Doing work at the 11am hour");
   //doing some work
+  calenderArr3.push(hour11Text);
+  localStorage.setItem("calendar3", JSON.stringify(calenderArr3));
 }
 hour11El.children().eq(2).on('click', saveHour11);
-hour11El.textContent= '11am hour';
+//hour11El.textContent= '11am hour';
 
+
+//--12th hour --
+let calenderArr4 = [];
+hour12El.children().eq(1).val(JSON.parse(localStorage.getItem("calendar4")));
 function saveHour12(){
+  let hour12Text = hour12El.children().eq(1).val();
   console.log("Doing work at the 12pm hour");
   //doing some work
+  calenderArr4.push(hour12Text);
+  localStorage.setItem("calendar4", JSON.stringify(calenderArr4));
 }
 hour12El.children().eq(2).on('click', saveHour12);
-hour12El.textContent= '12pm hour';
+//hour12El.textContent= '12pm hour';
 
+//-- hour 1 --
+let calenderArr5 = [];
+hour1El.children().eq(1).val(JSON.parse(localStorage.getItem("calendar5")));
 function saveHour1(){
+  let hour1Text = hour1El.children().eq(1).val();
   console.log("Doing work at the 1pm hour");
   //doing some work
+  calenderArr5.push(hour1Text);
+  localStorage.setItem("calendar5", JSON.stringify(calenderArr5));
 }
 hour1El.children().eq(2).on('click', saveHour1);
-hour1El.textContent= '1pm hour';
+//hour1El.textContent= '1pm hour';
 
+
+//-- hour 2 --
+let calenderArr6 = [];
+hour2El.children().eq(1).val(JSON.parse(localStorage.getItem("calendar6")));
 function saveHour2(){
+  let hour2Text = hour2El.children().eq(1).val();
   console.log("Doing work at the 2pm hour");
   //doing some work
+  calenderArr6.push(hour2Text);
+  localStorage.setItem("calendar6", JSON.stringify(calenderArr6));
 }
 hour2El.children().eq(2).on('click', saveHour2);
-hour2El.textContent= '2pm hour';
+//hour2El.textContent= '2pm hour';
 
+
+//-- hour 3 --
+let calenderArr7 = [];
+hour3El.children().eq(1).val(JSON.parse(localStorage.getItem("calendar7")));
 function saveHour3(){
+  let hour3Text = hour3El.children().eq(1).val();
   console.log("Doing work at the 3pm hour");
   //doing some work
+  calenderArr7.push(hour3Text);
+  localStorage.setItem("calendar7", JSON.stringify(calenderArr7));
 }
 hour3El.children().eq(2).on('click', saveHour3);
-hour3El.textContent= '3pm hour';
+//hour3El.textContent= '3pm hour';
 
+//-- hour 4 --
+let calenderArr8 = [];
+hour4El.children().eq(1).val(JSON.parse(localStorage.getItem("calendar8")));
 function saveHour4(){
+  let hour4Text = hour4El.children().eq(1).val();
   console.log("Doing work at the 4pm hour");
   //doing some work
+  calenderArr8.push(hour4Text);
+  localStorage.setItem("calendar8", JSON.stringify(calenderArr8));
 }
 hour4El.children().eq(2).on('click', saveHour4);
-hour4El.textContent= '4pm hour';
+//hour4El.textContent= '4pm hour';
 
+//-- hour 5 --
+let calenderArr9 = [];
+hour5El.children().eq(1).val(JSON.parse(localStorage.getItem("calendar9")));
 function saveHour5(){
+  let hour5Text = hour5El.children().eq(1).val();
   console.log("Doing work at the 5pm hour");
   //doing some work
+  calenderArr9.push(hour5Text);
+  localStorage.setItem("calendar9", JSON.stringify(calenderArr9));
 }
 hour5El.children().eq(2).on('click', saveHour5);
-hour5El.textContent= '5pm hour';
+//hour5El.textContent= '5pm hour';
 
 
 
