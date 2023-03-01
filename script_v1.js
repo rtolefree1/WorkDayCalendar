@@ -15,11 +15,10 @@
 // in the html.
 let timeNowEl = $('#currentDay');
 let timeVar = dayjs().format('hh:mm:ss');
-let dayVar = dayjs().format('dddd') + ' ' + dayjs().format('MMMM') + ' ' + dayjs().format('DD');
 
 // console.log("current time:", dayjs().format());
 // console.log("current time:", dayjs().hour()+":"+dayjs().minute());
-timeNowEl.text(dayVar);
+timeNowEl.text(timeVar);
 
 
 
@@ -72,8 +71,6 @@ function saveHour11(){
  
   calenderArr3.push(hour11Text);
   localStorage.setItem("calendar3", JSON.stringify(calenderArr3));
-
-  // timeForStatus("1", hour11El);
 }
 hour11El.children().eq(2).on('click', saveHour11);
 
@@ -155,8 +152,6 @@ function saveHour5(){
  
   calenderArr9.push(hour5Text);
   localStorage.setItem("calendar9", JSON.stringify(calenderArr9));
-  var clockNow = parseInt($(".time-block").attr("id"));
-  console.log("clock ",clockNow);
 }
 hour5El.children().eq(2).on('click', saveHour5);
 
@@ -166,143 +161,44 @@ hour5El.children().eq(2).on('click', saveHour5);
 
 
 
-// $(function () {
-//   // TODO: Add a listener for click events on the save button. This code should
-//   // use the id in the containing time-block as a key to save the user input in
-//   // local storage. HINT: What does `this` reference in the click listener
-//   // function? How can DOM traversal be used to get the "hour-x" id of the
-//   // time-bl for ock containing the button that was clicked? How might the id be
-//   // useful when saving the description in local storage?
-//   //
+$(function () {
+  // TODO: Add a listener for click events on the save button. This code should
+  // use the id in the containing time-block as a key to save the user input in
+  // local storage. HINT: What does `this` reference in the click listener
+  // function? How can DOM traversal be used to get the "hour-x" id of the
+  // time-bl for ock containing the button that was clicked? How might the id be
+  // useful when saving the description in local storage?
+  //
   
 
-//   // TODO: Add code to apply the past, present, or future class to each time
-//   // block by comparing the id to the current hour. HINTS: How can the id
-//   // attribute of each time-block be used to conditionally add or remove the
-//   // past, present, and future classes? How can Day.js be used to get the
-//   // current hour in 24-hour time?
-//   //
-//   // TODO: Add code to get any user input that was saved in localStorage and set
-//   // the values of the corresponding textarea elements. HINT: How can the id
-//   // attribute of each time-block be used to do this?
-//   //
-//   // TODO: Add code to display the current date in the header of the page.
-// });
-
-var objTimeArr = [hour9El, hour10El, hour11El, hour12El, hour1El, hour2El, hour3El, hour4El, hour5El]
-var timeArr = ["9","10","11","12","1","2","3","4","5"];
-//  var timeArrMorning = ["9","10","11"];
-//  var timeArrEvening = ["12","1","2","3","4","5"];
-
-let date = new Date();
-let currentTime = date.toLocaleTimeString();
-let morningEveningValue = date.toLocaleTimeString().split(" ")[1];
-if(morningEveningValue === "AM")
-    {
-      for(let i = 0; i < 3; i++)
- {
-   timeForStatus(timeArr[i], objTimeArr[i]);
-
- }
-    }
-    else if(morningEveningValue === "PM")
-    {
-      for(let i = 3; i < objTimeArr.length; i++)
-      {
-        timeForStatus(timeArr[i], objTimeArr[i]);
-      }
-    }
-
-// for(let i = 0; i < objTimeArr.length; i++)
-// {
-//   timeForStatus(timeArr[i], objTimeArr[i]);
-
-// }
-
-function setStatusMorning(){
-  for(let i = 0; i < 3; i++)
- {
-   timeForStatus(timeArr[i], objTimeArr[i]);
-
- }
-}
-
-function setStatusEvening(){
-  for(let i = 3; i < objTimeArr.length; i++)
- {
-   timeForStatus(timeArr[i], objTimeArr[i]);
-
- }
-}
-
+  // TODO: Add code to apply the past, present, or future class to each time
+  // block by comparing the id to the current hour. HINTS: How can the id
+  // attribute of each time-block be used to conditionally add or remove the
+  // past, present, and future classes? How can Day.js be used to get the
+  // current hour in 24-hour time?
+  //
+  // TODO: Add code to get any user input that was saved in localStorage and set
+  // the values of the corresponding textarea elements. HINT: How can the id
+  // attribute of each time-block be used to do this?
+  //
+  // TODO: Add code to display the current date in the header of the page.
+});
 
 //Creating timer
-function timeForStatus(timeValue, obj){
-    //debugger;
-    let date = new Date();
-    let currentTime = date.toLocaleTimeString();
-    // let morningEveningValue = date.toLocaleTimeString().split(" ")[1];
+function timeForStatus(){
+  $(".time-block").each(function(){
+    var htmlClockValue = parseInt($(this).attr("id"));
+    if(3 < dayjs().hour){
+      $(this).addClass("past");
+      $(this).removeClass("future");
+      $(this).addClass("present");
 
-    if(morningEveningValue === "AM")
-    {
-      if (parseInt(timeValue) < parseInt(currentTime)) {
-        $(obj).addClass("past");
-        $(obj).removeClass("future");
-        $(obj).removeClass("present");
-      } else if (parseInt(timeValue) > parseInt(currentTime)) {
-        $(obj).removeClass("past");
-        $(obj).addClass("present");
-        $(obj).removeClass("future");
-      } else {
-        $(obj).removeClass("present");
-        $(obj).removeClass("past");
-        $(obj).addClass("future");
-      }
-    }else if(morningEveningValue === "PM")
-    {
-      if (parseInt(timeValue) < parseInt(currentTime)) {
-        $(obj).addClass("past");
-        $(obj).removeClass("future");
-        $(obj).removeClass("present");
-      } else if (parseInt(timeValue) > parseInt(currentTime)) {
-        $(obj).removeClass("past");
-        $(obj).addClass("future");
-        $(obj).removeClass("present");
-      } else {
-        $(obj).removeClass("present");
-        $(obj).removeClass("past");
-        $(obj).addClass("future");
-      }
     }
+   // console.log(parseInt($(this).attr("id")));//.children().eq(0).val()));
 
+  });
 }
 
 // printCalendarEvent(){
 
-// }
-// var clock = setInterval(myTimer, 1000);
-
-
-
-// function myTimer() {
-//   let date = new Date();
-//   let time = date.toLocaleTimeString();
-//   document.getElementById("clock").innerHTML = time;
-//   $(".time-block").each(function () {
-//     var clockNow = parseInt($(this).attr("id"));
-
-//     if (clockNow < time) {
-//       $(this).addClass("past");
-//       $(this).removeClass("future");
-//       $(this).removeClass("present");
-//     } else if (clockNow > time) {
-//       $(this).removeClass("past");
-//       $(this).addClass("present");
-//       $(this).removeClass("future");
-//     } else {
-//       $(this).removeClass("present");
-//       $(this).removeClass("past");
-//       $(this).addClass("future");
-//     }
-//   });
 // }
