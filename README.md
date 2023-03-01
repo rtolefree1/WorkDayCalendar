@@ -44,7 +44,7 @@ The following animation demonstrates the application functionality:
 
 The following is Errors or updates that is needed in code:
 
-* Code is not recursive
+* Code is not following the DRY principle. Working that after all is working correctly.
 
 * Still need to work on the colors for the timeblock (past, present future)
 
